@@ -1,8 +1,7 @@
 function preload(){
   song = loadSound("Radiohead - Jigsaw Falling Into Place.mp3")
-  //song = loadSound("i want 100 of your time.mp3")
   playing = false
-  song.onended(() => {playing = false; document.getElementById("audio").innerText = "Play"; a = 0})
+  song.onended(() => {playing = false; document.getElementById("audio").innerText = "▶";})
   fr = 60
 }
 
@@ -76,7 +75,7 @@ function draw() {
     for(let i = 0; i < spectrumB.length; i++){
     
     layer.strokeWeight(0.018 * spectrumB[i])
-    layer.stroke(0 , 132, 255 - spectrumB[i], spectrumB[i]/40)
+    layer.stroke(0 , 50, 255 - spectrumB[i], spectrumB[i]/40)
     //layer.stroke(0, fft.getEnergy("treble"), fft.getEnergy("bass"), spectrumB[i] / 40)
     layer.line(0, i, 0, i)
     }
@@ -94,13 +93,14 @@ function toggleAudio(){
   if(!playing){
     song.play()
     console.log("playing")
-    document.getElementById("audio").innerText = "Pause"   
+    document.getElementById("audio").innerText = "||"   
   }
   else{
     song.pause()
     console.log("pasued")
-    document.getElementById("audio").innerText = "Play"
+    document.getElementById("audio").innerText = "▶"
   }
   
   playing = !playing
 }
+
