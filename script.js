@@ -1,6 +1,6 @@
 function preload(){
-  //song = loadSound("Radiohead - Jigsaw Falling Into Place.mp3")
-  song = loadSound("i want 100 of your time.mp3")
+  song = loadSound("Radiohead - Jigsaw Falling Into Place.mp3")
+  //song = loadSound("i want 100 of your time.mp3")
   playing = false
   song.onended(() => {playing = false; document.getElementById("audio").innerText = "Play"; a = 0})
   fr = 60
@@ -76,7 +76,8 @@ function draw() {
     for(let i = 0; i < spectrumB.length; i++){
     
     layer.strokeWeight(0.018 * spectrumB[i])
-    layer.stroke(50, fft.getEnergy("treble"), fft.getEnergy("bass"), spectrumB[i] / 10)
+    layer.stroke(0 , 132, 255 - spectrumB[i], spectrumB[i]/40)
+    //layer.stroke(0, fft.getEnergy("treble"), fft.getEnergy("bass"), spectrumB[i] / 40)
     layer.line(0, i, 0, i)
     }
   
