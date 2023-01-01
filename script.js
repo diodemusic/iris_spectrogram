@@ -34,13 +34,11 @@ function draw() {
   layer.noFill()
   layer.colorMode(RGB)
 
+  noStroke();
   fill("white")
   ellipse(width/2, height/2, width, height)
-  fill(75,114,72, 50)
-  noStroke();
-  circle(width/2, height/2, 511)
   fill("black");
-  circle(width/2, height/2, 132)
+  circle(width/2, height/2, 511)
 
   
   var spectrumA = fft.analyze()
