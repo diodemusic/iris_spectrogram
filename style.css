@@ -15,7 +15,7 @@ canvas {
   border: 0;
   text-decoration: none;
   border-radius: 15px;
-  background-color: rgba(100,100,100,0.1);
+  background-color: rgba(100,100,100,0.5);
   backdrop-filter: blur(30px);
   color: white;
   font-size: 18px;
@@ -26,6 +26,7 @@ canvas {
   left: 50%;
   transform: translateX(-50%);
   margin-bottom: 10px;
+  z-index: 2;
 }
 
 .glass-button:hover, .glass-button:active {

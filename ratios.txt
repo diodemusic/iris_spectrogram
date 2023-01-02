@@ -1,0 +1,11 @@
+everything needs to be * 1.7
+
+a - 88
+b - 61
+c - 117
+d - 54
+e - 132
+
+sclera = 452
+iris + pupil = 232
+pupil = 117

@@ -1,18 +1,18 @@
 function preload(){
-  song = loadSound("Radiohead - Jigsaw Falling Into Place.mp3")
+  song = loadSound("Knives Out.mp3");
+
   playing = false
-  song.onended(() => {playing = false; document.getElementById("audio").innerText = "▶";})
+  song.onended(() => {playing = false; document.getElementById("audio").innerText = "▶"; a = 0})
   fr = 60
 }
 
 function setup() {
-  createCanvas(1250, 600);
+  createCanvas(windowWidth, windowHeight);
   layer = createGraphics(width, height)
   
   fft = new p5.FFT(0, 256);
   
   totalFrames = song.duration() * fr
-  // a = 360 / totalFrames * 0.78
   a = 360 / totalFrames * 0.78
   b = a
   
@@ -27,22 +27,26 @@ function draw() {
     }
   }
 
-  background("black");
-  
+  background(18, 18, 18);
     
   layer.noFill()
   layer.colorMode(RGB)
 
   noStroke();
-  fill("white")
-  ellipse(width/2, height/2, width, height)
-  fill("black");
-  circle(width/2, height/2, 511)
+  //fill("white");
+  //ellipse(width/2, height/2, width, height)
+  fill(207, 132, 106);
+  circle(500, 500, 100);
+  circle(1350, 500, 100); // papilla
+  fill(248, 245, 250)
+  circle(width/2, height/2, 452 * 1.8); // sclera
+  fill(2, 2, 2)
+  circle(width/2, height/2, 232 * 1.8); // iris + pupil
 
   
   var spectrumA = fft.analyze()
   var spectrumB = spectrumA.reverse()
-  spectrumB.splice(0, -0)
+  spectrumB.splice(0, 47)
   
   push()
   translate(-100, -100)
@@ -75,7 +79,7 @@ function draw() {
     for(let i = 0; i < spectrumB.length; i++){
     
     layer.strokeWeight(0.018 * spectrumB[i])
-    layer.stroke(0 , 50, 255 - spectrumB[i], spectrumB[i]/40)
+    layer.stroke(fft.getEnergy("bass") - spectrumB[i], 0, 255, spectrumB[i] / 70)
     //layer.stroke(0, fft.getEnergy("treble"), fft.getEnergy("bass"), spectrumB[i] / 40)
     layer.line(0, i, 0, i)
     }
@@ -84,8 +88,29 @@ function draw() {
     
     image(layer, -width/2, -height/2)
   pop()
-  
+
   if (playing) a += b
+
+  noFill();
+  strokeWeight(240);
+  stroke(18, 18, 18);
+  line(420, 120, 1220, 120)
+  translate(width/2, height/2);
+  beginShape();
+  vertex(-690,0);
+  bezierVertex(-30,-300,30,-300,690,0);
+  bezierVertex(30,440,-30,440,-690,0);
+  endShape();
+  strokeWeight(1);
+  translate(-width/2, -height/2); // outer eye
+
+  let blinking = false;
+
+  
+
+  fill(2, 2, 2)
+  noStroke();
+  circle(width/2, height/2, 117 * 1.6) // pupil
   
 }
 
@@ -103,4 +128,3 @@ function toggleAudio(){
   
   playing = !playing
 }
-
