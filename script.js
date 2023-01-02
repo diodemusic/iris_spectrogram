@@ -79,7 +79,7 @@ function draw() {
     for(let i = 0; i < spectrumB.length; i++){
     
     layer.strokeWeight(0.018 * spectrumB[i])
-    layer.stroke(fft.getEnergy("bass") - spectrumB[i], 0, 255, spectrumB[i] / 70)
+    layer.stroke(fft.getEnergy("bass") - spectrumB[i], 0, 255, spectrumB[i] / 150)
     //layer.stroke(0, fft.getEnergy("treble"), fft.getEnergy("bass"), spectrumB[i] / 40)
     layer.line(0, i, 0, i)
     }
